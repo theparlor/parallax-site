@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Parallax — the overhead view of a coherence stack (v0 · pressure-test)</title>
+<meta name="description" content="Parallax is a viewpoint name for the overhead view of a coherence stack — 21 products, one loop. Active hypothesis, v0, built to be challenged.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --depth:#001520; --navy:#002A3A; --surface:#0a2733; --surface-2:#0d2e3c;
+    --viewpoint:#249ED8; --altitude:#F7660A; --atmosphere:#8ba3ad;
+    --grey:#DFE2E1; --white:#FFFFFF; --line:#16384a;
+    --maxw:1080px;
+    font-family:'Montserrat','Corbel',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--depth);color:var(--grey);line-height:1.6;font-weight:400;
+    background-image:radial-gradient(ellipse 80% 50% at 50% -10%, rgba(36,158,216,0.10), transparent 60%);}
+  a{color:var(--viewpoint);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* pressure-test banner */
+  .ptbanner{background:rgba(247,102,10,0.08);border-bottom:1px solid rgba(247,102,10,0.3);
+    padding:10px 24px;text-align:center;font-size:12px;color:var(--grey);font-weight:500;letter-spacing:.3px}
+  .ptbanner b{color:var(--altitude);text-transform:uppercase;letter-spacing:1px}
+
+  /* nav */
+  nav.top{position:sticky;top:0;z-index:20;background:rgba(0,21,32,0.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line)}
+  nav.top .wrap{display:flex;align-items:center;gap:28px;height:58px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.5px;color:var(--white);font-size:18px}
+  .brand svg{width:26px;height:26px}
+  nav.top a.link{color:var(--atmosphere);font-size:13px;font-weight:500;letter-spacing:.2px}
+  nav.top a.link:hover{color:var(--white);text-decoration:none}
+  nav.top .spacer{flex:1}
+
+  /* hero */
+  header.hero{padding:84px 0 64px;position:relative;overflow:hidden}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;color:var(--viewpoint);margin-bottom:22px}
+  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--altitude);animation:p 2.4s infinite}
+  @keyframes p{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font-size:clamp(38px,6vw,68px);font-weight:800;line-height:1.04;letter-spacing:-2px;color:var(--white);max-width:14ch}
+  h1 .hl{background:linear-gradient(100deg,var(--viewpoint),#7fd0f2);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(17px,2.2vw,21px);color:var(--grey);max-width:62ch;margin-top:24px;font-weight:400}
+  .lede strong{color:var(--white);font-weight:600}
+  .herofig{margin:46px 0 8px}
+  .herofig svg{width:100%;max-width:760px;height:auto;display:block}
+  .figcap{font-size:12.5px;color:var(--atmosphere);font-style:italic;margin-top:14px;max-width:62ch}
+
+  /* sections */
+  section{padding:62px 0;border-top:1px solid var(--line)}
+  .kicker{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--viewpoint);margin-bottom:14px}
+  h2{font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-1px;color:var(--white);max-width:20ch;line-height:1.12}
+  h2 + .sub{font-size:17px;color:var(--atmosphere);margin-top:14px;max-width:64ch}
+  p.body{font-size:16px;color:var(--grey);max-width:66ch;margin-top:18px}
+  p.body + p.body{margin-top:14px}
+  .claimline{color:var(--altitude);font-weight:600}
+
+  /* tax->investment strip */
+  .shift{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin-top:34px}
+  .shift .box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+  .shift .box.from{opacity:.72}
+  .shift .box .t{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:8px}
+  .shift .box.from .t{color:var(--atmosphere)}
+  .shift .box.to .t{color:var(--altitude)}
+  .shift .box .d{font-size:14.5px;color:var(--grey)}
+  .shift .arrow{font-size:26px;color:var(--viewpoint);text-align:center}
+
+  /* is / is not */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px}
+  .card h3{font-size:13px;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px;font-weight:700}
+  .card.is h3{color:var(--viewpoint)} .card.isnot h3{color:var(--atmosphere)}
+  .card ul{list-style:none} .card li{font-size:14.5px;padding:7px 0 7px 20px;position:relative;border-bottom:1px solid rgba(255,255,255,.04)}
+  .card li:last-child{border-bottom:none}
+  .card.is li::before{content:'\2197';position:absolute;left:0;color:var(--viewpoint)}
+  .card.isnot li::before{content:'\00D7';position:absolute;left:0;color:var(--atmosphere)}
+
+  /* loop / stack as proof */
+  .loopfig{margin:30px 0;text-align:center}
+  .loopfig svg{width:100%;max-width:680px;height:auto}
+  .proofgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+  .ppos{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .ppos .ph{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:6px}
+  .ppos.n .ph{color:var(--altitude)} .ppos.s .ph{color:var(--viewpoint)}
+  .ppos.e .ph{color:#5ec8a0} .ppos.o .ph{color:#b58bf0}
+  .ppos .pl{font-size:12.5px;color:var(--atmosphere)}
+  .ppos .pl b{color:var(--grey);font-weight:600}
+  .proofnote{margin-top:22px;font-size:14px;color:var(--atmosphere);border-left:3px solid var(--viewpoint);padding:6px 0 6px 16px;max-width:66ch}
+
+  /* lineage */
+  .lin{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:26px}
+  .lin .row{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .lin .who{font-weight:700;color:var(--white);font-size:14px;min-width:128px}
+  .lin .what{font-size:13.5px;color:var(--atmosphere)}
+
+  /* honesty / challenge */
+  .challenge{background:linear-gradient(160deg,rgba(247,102,10,0.06),rgba(0,21,32,0.2));
+    border:1px solid rgba(247,102,10,0.25);border-radius:14px;padding:30px 32px;margin-top:30px}
+  .challenge h3{color:var(--altitude);font-size:13px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;font-weight:700}
+  .challenge p{font-size:15px;color:var(--grey);max-width:68ch;margin-bottom:12px}
+  .gates{margin-top:18px;display:grid;gap:10px}
+  .gate{display:flex;gap:12px;align-items:baseline;font-size:14px;color:var(--grey)}
+  .gate .st{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:2px 8px;border-radius:20px;white-space:nowrap}
+  .st.open{background:rgba(247,102,10,.15);color:var(--altitude);border:1px solid rgba(247,102,10,.35)}
+  .st.part{background:rgba(36,158,216,.15);color:var(--viewpoint);border:1px solid rgba(36,158,216,.35)}
+  .maturity{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .mchip{font-size:12px;font-weight:600;padding:5px 11px;border-radius:6px}
+  .mchip.ship{background:rgba(94,200,160,.12);color:#5ec8a0;border:1px solid rgba(94,200,160,.3)}
+  .mchip.hyp{background:rgba(36,158,216,.12);color:var(--viewpoint);border:1px solid rgba(36,158,216,.3)}
+  .mchip.open{background:rgba(247,102,10,.12);color:var(--altitude);border:1px solid rgba(247,102,10,.3)}
+
+  /* serves */
+  .serves{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+  .scol{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+  .scol .n{font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px}
+  .scol .d{font-size:13px;color:var(--atmosphere)}
+  .scol .tag{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--viewpoint);font-weight:700;display:block;margin-bottom:8px}
+
+  /* alternatives */
+  .alts{margin-top:24px;display:grid;gap:10px}
+  .alt{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--grey)}
+  .alt b{color:var(--white)}
+  .altpos{margin-top:18px;font-size:15px;color:var(--grey);max-width:66ch}
+  .altpos .hl{color:var(--altitude);font-weight:600}
+
+  /* entry points */
+  .entries{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+  .entry{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--viewpoint);border-radius:0 10px 10px 0;padding:16px 18px}
+  .entry .n{font-weight:600;color:var(--white);font-size:14.5px}
+  .entry .d{font-size:13px;color:var(--atmosphere);margin-top:4px}
+  .entry code{font-family:'SF Mono',Consolas,monospace;font-size:12px;color:var(--viewpoint)}
+
+  footer{padding:46px 0;border-top:1px solid var(--line);color:var(--atmosphere);font-size:13px}
+  footer .prov{margin-top:10px;font-size:12px;color:#5a7783}
+
+  @media(max-width:760px){
+    .shift,.twocol,.proofgrid,.lin,.serves,.entries{grid-template-columns:1fr}
+    .shift .arrow{transform:rotate(90deg)}
+    nav.top .wrap{height:auto;padding-top:10px;padding-bottom:10px}
+    nav.top a.link{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ptbanner">
+  <b>v0 · pressure-test</b> &nbsp;·&nbsp; not public, not indexed &nbsp;·&nbsp; an active hypothesis built to be challenged — tell me where it's wrong.
+</div>
+
+<nav class="top"><div class="wrap">
+  <span class="brand">
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <!-- parallax: two offset viewpoints, convergent sightlines to a distant target, layered depth planes -->
+      <circle cx="5" cy="24" r="2.4" fill="#249ED8"/>
+      <circle cx="13" cy="24" r="2.4" fill="#249ED8"/>
+      <circle cx="22" cy="7" r="2.6" fill="#F7660A"/>
+      <line x1="5" y1="24" x2="22" y2="7" stroke="#249ED8" stroke-width="1.1" stroke-opacity="0.7"/>
+      <line x1="13" y1="24" x2="22" y2="7" stroke="#249ED8" stroke-width="1.1" stroke-opacity="0.7"/>
+      <line x1="3" y1="14" x2="29" y2="14" stroke="#DFE2E1" stroke-width="0.7" stroke-opacity="0.25"/>
+      <line x1="6" y1="10" x2="26" y2="10" stroke="#DFE2E1" stroke-width="0.7" stroke-opacity="0.18"/>
+    </svg>
+    Parallax
+  </span>
+  <span class="spacer"></span>
+  <a class="link" href="#shift">The shift</a>
+  <a class="link" href="#what">What it is</a>
+  <a class="link" href="#proof">The stack as proof</a>
+  <a class="link" href="#lineage">Lineage</a>
+  <a class="link" href="#challenge">Where it's unproven</a>
+  <a class="link" href="#deeper">Go deeper</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow"><span class="pulse"></span>Active hypothesis · v0 · the overhead view</span>
+  <h1>When AI collapses the cost of building, <span class="hl">coherence</span> becomes the scarce resource.</h1>
+  <p class="lede">Parallax is a <strong>viewpoint name</strong> for the overhead view of a coherence stack — <strong>21 composable products and 17 frameworks</strong> that compose along one loop (Notice → Spec → Execute → Observe), governed by the Intent operating model. It is not a product, not a container, and not a methodology book. It is the surface from which the relationships between the parts become legible — and challengeable.</p>
+
+  <div class="herofig">
+    <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two offset viewpoints resolve the depth of a distant object through convergent sightlines — the parallax mechanic.">
+      <defs>
+        <linearGradient id="atm" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#249ED8" stop-opacity="0.0"/>
+          <stop offset="1" stop-color="#249ED8" stop-opacity="0.20"/>
+        </linearGradient>
+      </defs>
+      <rect width="760" height="280" fill="url(#atm)"/>
+      <!-- depth reference planes (atmospheric perspective) -->
+      <line x1="40" y1="70" x2="720" y2="70" stroke="#DFE2E1" stroke-opacity="0.10" stroke-dasharray="2 10"/>
+      <line x1="40" y1="120" x2="720" y2="120" stroke="#DFE2E1" stroke-opacity="0.14" stroke-dasharray="2 9"/>
+      <line x1="40" y1="180" x2="720" y2="180" stroke="#DFE2E1" stroke-opacity="0.18" stroke-dasharray="2 8"/>
+      <!-- distant target -->
+      <circle cx="500" cy="64" r="9" fill="#F7660A"/>
+      <text x="500" y="44" fill="#8ba3ad" font-size="12" text-anchor="middle" font-family="Montserrat">the coherent system</text>
+      <!-- two viewpoints at the base -->
+      <circle cx="170" cy="230" r="7" fill="#249ED8"/>
+      <circle cx="330" cy="230" r="7" fill="#249ED8"/>
+      <text x="170" y="256" fill="#8ba3ad" font-size="11.5" text-anchor="middle" font-family="Montserrat">viewpoint A</text>
+      <text x="330" y="256" fill="#8ba3ad" font-size="11.5" text-anchor="middle" font-family="Montserrat">viewpoint B</text>
+      <!-- convergent sightlines -->
+      <line x1="170" y1="230" x2="500" y2="64" stroke="#249ED8" stroke-width="1.6" stroke-opacity="0.85"/>
+      <line x1="330" y1="230" x2="500" y2="64" stroke="#249ED8" stroke-width="1.6" stroke-opacity="0.85"/>
+      <!-- displacement baseline -->
+      <line x1="170" y1="230" x2="330" y2="230" stroke="#DFE2E1" stroke-width="1" stroke-opacity="0.4"/>
+      <text x="250" y="222" fill="#8ba3ad" font-size="11" text-anchor="middle" font-family="Montserrat" font-style="italic">altitude separation</text>
+    </svg>
+    <p class="figcap">Parallax: you resolve the depth of a thing by viewing it from separated vantage points. The name does two jobs — depth resolves with altitude separation, and depth is <em>inferred</em> from displacement across viewpoints. That is exactly what this system does to its own work.</p>
+  </div>
+</div></header>
+
+<section id="shift"><div class="wrap">
+  <div class="kicker">Why it exists</div>
+  <h2>AI changed the cost curve, not the destination.</h2>
+  <p class="body">Everything <em>downstream</em> of the model is now cheap — the implementation, the typing, the boilerplate. Everything <em>upstream</em> of the model — the noticing, the framing, the deciding — is where the leverage moved. Teams that keep optimizing for the old constraint (coordinating human labor through tickets and sprints) build overhead around the wrong bottleneck.</p>
+  <p class="body">The founding reframe is one move: <span class="claimline">from a coordination tax to a coordination investment.</span> Agile ceremony evaporates after each sprint — it is paid down, repeatedly. Coherence artifacts compound — they are paid forward, once. That single shift is the argument the discipline rests on.</p>
+  <div class="shift">
+    <div class="box from"><div class="t">Coordination tax</div><div class="d">Standups, story points, sprint rituals. Re-paid every cycle. Evaporates on completion. Scales with headcount.</div></div>
+    <div class="arrow">&rarr;</div>
+    <div class="box to"><div class="t">Coordination investment</div><div class="d">Compiled knowledge, specs-as-contracts, preserved dissent, traceable decisions. Paid forward once. Compounds.</div></div>
+  </div>
+</div></section>
+
+<section id="what"><div class="wrap">
+  <div class="kicker">What Parallax is</div>
+  <h2>A viewpoint, not a container.</h2>
+  <p class="sub">Parallax sits <em>above</em> the stack as the shareable narrative surface. It composes the overhead view from the products' state — it does not own or contain them (sibling-over-parent-child is the architectural law here).</p>
+  <div class="twocol">
+    <div class="card is"><h3>It is</h3><ul>
+      <li>The overhead view — altitude model + the relationships across the stack</li>
+      <li>A surface that <em>publishes from</em> the products below, never wraps them</li>
+      <li>Brand + narrative architecture — a way to read the system, not run it</li>
+      <li>An honest hypothesis under pressure test</li>
+    </ul></div>
+    <div class="card isnot"><h3>It is not</h3><ul>
+      <li>The discipline — that is <b>Coherence Engineering</b>, held internal until the gates open</li>
+      <li>The execution framework — that is <b>Intent</b>, at a different pipeline position</li>
+      <li>A container or parent of the other products</li>
+      <li>A category — not yet. It earns the name by what it produces, not what it claims</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section id="proof"><div class="wrap">
+  <div class="kicker">The stack as proof</div>
+  <h2>The evidence is that it built itself.</h2>
+  <p class="sub">This is not a theory deck. It is a working system of 21 products that compose along one loop — and the loop ran on its own construction. The products below are not a catalog to buy; they are the proof the discipline is operationalized, not asserted.</p>
+  <div class="loopfig">
+    <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Notice, Spec, Execute, Observe loop with a double-loop back to Knowledge.">
+      <g font-family="Montserrat" font-size="13" font-weight="700" text-anchor="middle">
+        <rect x="20" y="50" width="130" height="48" rx="9" fill="#0a2733" stroke="#F7660A" stroke-width="1.4"/>
+        <text x="85" y="79" fill="#F7660A">Notice</text>
+        <rect x="190" y="50" width="130" height="48" rx="9" fill="#0a2733" stroke="#249ED8" stroke-width="1.4"/>
+        <text x="255" y="79" fill="#249ED8">Spec</text>
+        <rect x="360" y="50" width="130" height="48" rx="9" fill="#0a2733" stroke="#5ec8a0" stroke-width="1.4"/>
+        <text x="425" y="79" fill="#5ec8a0">Execute</text>
+        <rect x="530" y="50" width="130" height="48" rx="9" fill="#0a2733" stroke="#b58bf0" stroke-width="1.4"/>
+        <text x="595" y="79" fill="#b58bf0">Observe</text>
+      </g>
+      <g stroke="#8ba3ad" stroke-width="1.3" fill="none" marker-end="url(#ah)">
+        <defs><marker id="ah" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><path d="M0,0 L9,3.5 L0,7" fill="#8ba3ad"/></marker></defs>
+        <line x1="150" y1="74" x2="186" y2="74"/>
+        <line x1="320" y1="74" x2="356" y2="74"/>
+        <line x1="490" y1="74" x2="526" y2="74"/>
+      </g>
+      <path d="M 595 98 C 595 135, 85 135, 85 100" stroke="#b58bf0" stroke-width="1.2" stroke-dasharray="4 4" fill="none" marker-end="url(#ah)"/>
+      <text x="340" y="146" fill="#8ba3ad" font-size="11" text-anchor="middle" font-family="Montserrat" font-style="italic">double-loop: Observe updates the domain model, not just the execution</text>
+    </svg>
+  </div>
+  <div class="proofgrid">
+    <div class="ppos n"><div class="ph">Notice</div><div class="pl"><b>Intent</b> signals · <b>Witness</b> events · <b>Pulse</b> watch-list · <b>Cortège</b> fetch fabric</div></div>
+    <div class="ppos s"><div class="ph">Spec</div><div class="pl"><b>Voices</b> dissent panels · <b>Cast</b> identity · <b>Crucible</b> synthesis · <b>Topography</b> plan-state</div></div>
+    <div class="ppos e"><div class="ph">Execute</div><div class="pl"><b>Forge</b> composition · <b>Fieldbook</b> · <b>studio-control</b> · <b>org-design-tooling</b></div></div>
+    <div class="ppos o"><div class="ph">Observe</div><div class="pl"><b>library-index</b> · <b>Loom</b> session-state · <b>Conduit</b> cross-surface · <b>Throughline</b> trace</div></div>
+  </div>
+  <p class="proofnote"><strong>Intent is the reference implementation</strong> — the execution loop, proven first, with its own published site. The other twenty products are the same discipline applied at other positions. That is the doorway: you arrive from Intent, and this is the system Intent is one instance of.</p>
+</div></section>
+
+<section id="lineage"><div class="wrap">
+  <div class="kicker">Lineage — nothing here is invented</div>
+  <h2>The credit travels with the ancestors.</h2>
+  <p class="sub">This is a synthesis, not a novel method. Each load-bearing idea is borrowed on purpose, and named — because the credibility comes with the name.</p>
+  <div class="lin">
+    <div class="row"><span class="who">Marty Cagan</span><span class="what">Empowered teams — give the problem, not the solution. AI widens the gap.</span></div>
+    <div class="row"><span class="who">Jeff Patton</span><span class="what">Shared understanding is the artifact; tickets are residue.</span></div>
+    <div class="row"><span class="who">Teresa Torres</span><span class="what">Continuous discovery — keep the opportunity tree alive, don't freeze it.</span></div>
+    <div class="row"><span class="who">April Dunford</span><span class="what">Positioning — what category, against what alternative, and why best.</span></div>
+    <div class="row"><span class="who">John Boyd</span><span class="what">You can't get coherent perception from inside — inject external reference points (→ Voices).</span></div>
+    <div class="row"><span class="who">Chris Argyris</span><span class="what">Double-loop — question the assumptions, not just optimize execution.</span></div>
+    <div class="row"><span class="who">Andrej Karpathy</span><span class="what">Three layers — raw sources / compiled knowledge / running code. Compile, don't retrieve.</span></div>
+    <div class="row"><span class="who">Nate B Jones</span><span class="what">The three-engineering progression — prompt → context → intent engineering.</span></div>
+  </div>
+</div></section>
+
+<section id="challenge"><div class="wrap">
+  <div class="kicker">Where it's unproven</div>
+  <h2>This is a hypothesis. Here is where to swing.</h2>
+  <div class="challenge">
+    <h3>The honest standing of the claim</h3>
+    <p>This is <strong>not yet a category</strong>; it is a hypothesis under pressure test. The discipline name — <em>Coherence Engineering</em> — is held internal on purpose, and only earns public use once three external-articulation gates clear. Until then the work speaks in its sibling vocabulary: prompt, context, and harness engineering.</p>
+    <p>And the honest market: the <strong>serviceable addressable audience today is roughly one — me.</strong> That is exactly why this surface exists. A worldview cannot advance past theory, or past an audience of its author, unless its view is <em>expressable, navigable, and challengeable</em>. So: navigate it, and challenge it.</p>
+    <div class="gates">
+      <div class="gate"><span class="st open">Gate 1 · open</span> The Voices-judged coherence-debt register resolves to zero.</div>
+      <div class="gate"><span class="st open">Gate 2 · open</span> The CON-COH machine-assertable contracts pass against the corpus.</div>
+      <div class="gate"><span class="st part">Gate 3 · in test</span> "Parallax" reads as depth-through-viewpoints to an external reader without explanation. <em>(This page is that test.)</em></div>
+    </div>
+    <div class="maturity">
+      <span class="mchip ship">Shipped — Intent loop, Voices, Cast, library-index, the 21-product spine</span>
+      <span class="mchip hyp">Hypothesis — coherence-as-discipline, the altitude model (Warp, early)</span>
+      <span class="mchip open">Open — is this a category, or just my operating system?</span>
+    </div>
+  </div>
+  <p class="body" style="margin-top:24px">The sharpest open question, stated plainly for the reader most likely to ask it: <strong>is the surface area too large?</strong> Twenty-one products is either coherence operationalized — or sprawl with a viewpoint name on top. If you'd implode part of it, that's the conversation this page is for.</p>
+</div></section>
+
+<section id="serves"><div class="wrap">
+  <div class="kicker">Who it serves</div>
+  <h2>Built for one, opened outward deliberately.</h2>
+  <div class="serves">
+    <div class="scol"><span class="tag">Now</span><div class="n">The author</div><div class="d">A solo practitioner at the scale of a small consultancy. The system is the second practitioner he doesn't hire.</div></div>
+    <div class="scol"><span class="tag">Inside the tent</span><div class="n">Registered peers</div><div class="d">Architecture/AI and product-academy peers, in the Cast registry — patterns and challenge flow both ways.</div></div>
+    <div class="scol"><span class="tag">Downstream</span><div class="n">Engagement teams</div><div class="d">Receive the methodology's rendered outputs — a polished artifact, not an unfamiliar process to adopt.</div></div>
+    <div class="scol"><span class="tag">Gated</span><div class="n">The published audience</div><div class="d">The "coherence engineering as a category" reader — behind the three articulation gates above.</div></div>
+  </div>
+</div></section>
+
+<section id="deeper"><div class="wrap">
+  <div class="kicker">Where Parallax stands — and how to go deeper</div>
+  <h2>Against what alternative.</h2>
+  <p class="sub">Dunford's question: what are the real alternatives a collaborator has today, and why does none of them hold this position?</p>
+  <div class="alts">
+    <div class="alt"><b>Fragmented consulting frameworks</b> — disconnected playbooks for discovery, delivery, strategy. No altitude model, no throughline between them.</div>
+    <div class="alt"><b>Agile transformation services</b> — execution-posture work (how we work) that rarely touches the altitude problem (are we even at the right altitude?).</div>
+    <div class="alt"><b>Narrative strategy firms</b> — they work on how you <em>describe</em> the work, not on the coherence of the work itself.</div>
+  </div>
+  <p class="altpos">None holds <span class="hl">altitude + coherence + narrative</span> simultaneously. That intersection is the position — claimed as a hypothesis, not yet as a category.</p>
+
+  <div class="entries">
+    <div class="entry"><div class="n">The architecture</div><div class="d">Every product, framework, and seam, with paths and contract authorities. <code>Core/ECOSYSTEM-ARCHITECTURE-2026-05-20.md</code></div></div>
+    <div class="entry"><div class="n">The why, in full</div><div class="d">The unifying narrative for the stack. <code>Core/ECOSYSTEM-MARKETING-NARRATIVE-2026-05-20.md</code></div></div>
+    <div class="entry"><div class="n">The discipline</div><div class="d">Coherence Engineering, hypothesis-in-refinement. <code>Core/frameworks/coherence-engineering/DEFINITION.md</code></div></div>
+    <div class="entry"><div class="n">The reference implementation</div><div class="d">Intent — the execution loop, proven first, its own site. <code>theparlor.github.io/intent-site</code></div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>Parallax · the overhead view of a coherence stack — <strong style="color:var(--grey)">active hypothesis, v0</strong>, built to be challenged.</div>
+  <div class="prov">v0 pressure-test surface · not public, not indexed · brand is provisional (Turnberry-derived scaffold) · source: <code style="color:#5a7783">Core/products/parallax/</code> · the Notice→Spec→Execute→Observe loop runs on this work too.</div>
+</div></footer>
+
+</body>
+</html>
