@@ -19,7 +19,7 @@ A single navigable v0 surface that states the coherence-stack hypothesis and is 
 - **This repo:** the public published HTML only (no internals).
 - **Render layer:** the Foundry type system (`Core/frameworks/design-systems/foundry/`) — a
   future pass re-renders this surface through Foundry's portfolio identity (Playfair/Spectral);
-  v0 currently uses Parallax's Turnberry-derived Montserrat scaffold.
+  v0 currently uses Parallax's derived Montserrat scaffold.
 - **Front-door role:** Parallax is the overhead index that links the other `*-site` surfaces
   (intent-site, etc.) per the portfolio publishing pattern (WS-DDR-107).
 

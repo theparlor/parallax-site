@@ -1,0 +1,15 @@
+{
+  "id": "2026-10-02-claude-core-client-cleanup-H-parallax-site-2",
+  "provider": "claude",
+  "status": "complete",
+  "branch": "agent/claude/2026-10-02-core-client-cleanup-H-parallax-site-2",
+  "worktree": "../parallax-site-wt-2026-10-02-core-client-cleanup-H-parallax-site-2",
+  "base_commit": "fa14ecf",
+  "objective": "Neutralize client content per WS-DDR-153 (finish)",
+  "owned_paths": [
+    "README.md,index.html"
+  ],
+  "started": "2026-10-02T17:26:51-04:00",
+  "handoff": ".agents/handoffs/2026-10-02-claude-core-client-cleanup-H-parallax-site-2.md",
+  "landed": "2026-10-02T17:26:57-04:00"
+}
