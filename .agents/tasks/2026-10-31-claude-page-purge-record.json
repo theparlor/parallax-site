@@ -1,0 +1,16 @@
+{
+  "id": "2026-10-31-claude-page-purge-record",
+  "provider": "claude",
+  "status": "complete",
+  "branch": "agent/claude/2026-10-31-page-purge-record",
+  "worktree": "../parallax-site-wt-2026-10-31-page-purge-record",
+  "base_commit": "66937e6",
+  "objective": "record the 2026-10-31 name purge of this public repo's history: manifest, ledger row, KF-11 review in the handoff",
+  "owned_paths": [
+    ".intent/retirements",
+    ".agents/handoffs"
+  ],
+  "started": "2026-10-31T10:45:32-04:00",
+  "handoff": ".agents/handoffs/2026-10-31-claude-page-purge-record.md",
+  "landed": "2026-10-31T10:45:33-04:00"
+}
